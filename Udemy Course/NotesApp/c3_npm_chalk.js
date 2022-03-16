@@ -1,0 +1,5 @@
+const c = require('chalk')
+console.log(c.green('Success!'))
+console.log(c.green.bgRed.bold('Error!'))
+console.log(c.green.bgRed.inverse.bold('Success!'))
+console.log(c.green.underline.bgRed('Error!'))
