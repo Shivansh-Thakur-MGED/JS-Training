@@ -1,5 +1,6 @@
 const chalk = require('chalk')
 const yargs = require('yargs')
+const notes = require('./notes.js')
 
 //const cmd = process.argv[2]
 
@@ -12,14 +13,14 @@ const yargs = require('yargs')
     console.log(chalk.bgYellow.black('Removing note!'))
 }else{
     console.log(chalk.bgRed('ERROR'), '- Invalid argument given as input')
-} */
+} */ 
 
 yargs.version('1.1.0')
 
 yargs.command({
     command: 'add',
     describe: 'Add new note',
-    builder: {
+    builder: {//describes extra arguments in cli
         title: {
             describe: 'Note title',
             demandOption: true,
@@ -31,17 +32,26 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: function(argv){
-        console.log(chalk.bgYellow.black('Adding note!'), chalk.yellow(argv.title))
-        console.log(argv.body)
+    handler: function(argv){//function executed when command has been inputted
+        //console.log(chalk.bgYellow.black('Adding note!'), chalk.yellow(argv.title))
+        //console.log(argv.body)
+        notes.addNote(argv.title, argv.body)
     }
 })
 
 yargs.command({
     command: 'remove',
     describe: 'Remove a note',
-    handler: function(){
-        console.log(chalk.bgYellow.black('Removing a note! '))
+    builder: {
+        title:{
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function(argv){
+        notes.removeNote(argv.title)
+        //console.log(chalk.bgYellow.black('Removing a note! '))
     }
 })
 
