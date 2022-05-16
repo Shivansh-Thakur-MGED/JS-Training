@@ -30,8 +30,8 @@ router.post('/', async(req, res) => { //for adding data to server
         name: req.body.name,
         tech: req.body.tech,
         sub: req.body.sub
-    })
-
+    }) 
+ 
 try{
     const a1 = await alien.save()
     res.json(a1)//to see what was added to server

@@ -5,7 +5,7 @@ const alienSchema = new mongoose.Schema({//connect to database
     name: {
         type: String,
         required: true
-    },
+    }, 
     tech:{
         type: String,
         required: true
